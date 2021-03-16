@@ -6,9 +6,9 @@ Created on Tue Mar  3 10:06:09 2020
 @author: noelia
 """
 ##############################################################################
-#    Este algoritmo calcula la estadistica para cada estacion de la CETESB   #
-#         Para ello se necesita correr el programa statistics_basic.py       #
-#                         antes de correr este script                        #
+#    This algorithm calculates the statistics for each CETESB station        #
+#         For this you need to run the statistics_basic.py script            #
+#                          before running this script                        #
 ##############################################################################
 
 import numpy as np
@@ -28,6 +28,7 @@ def strip_accents(text):
            .decode("utf-8")
     return str(text)
 
+# If the output folder is not created, then it will be created 
 def path(ouput):
     if not os.path.exists(ouput):
         os.makedirs(ouput)
@@ -35,19 +36,13 @@ def path(ouput):
 
 cetesb_stations = pd.read_csv("/media/noelia/TOSHIBA EXT/doctorado/usp/in-situ/cetesb/DADOS_CETESB/point_station_cetesb/cetesb_station_2017_codes_qualr_fil.csv", encoding='utf-8')
 
-inputt ='/media/noelia/TOSHIBA EXT/doctorado/usp/in-situ/cetesb/DADOS_CETESB/'
-dominio = str(input("1_dominio ou 2_dominio: "))
-name_out = str(input("qualar wrf files: "))
-month = str(input("june or sep???: "))
+INPUT ='path where the pollutants data was saved by station'
+OUTPUT = path("output path to save created files")
 
-INPUT = inputt+dominio+'/cetesb_wrf_cbmz_iag_ysu_2017/'+name_out+'/'+month+'/'
-OUTPUT = "/media/noelia/TOSHIBA EXT/doctorado/usp/modelo/analisis_wrf/analisis_wrf_chem/"
-
-
-#### Tabela da estatistica das estacoes da CETESB
+#### Creating the statistics table of the CETESB stations 
 stat = pd.DataFrame({"name":[]})
 
-##### lista de los archivos excel
+##### list of excel files 
 listdir = os.listdir(INPUT+'/')
 
 variables = ['rh','tc','wd','ws','press']
@@ -58,8 +53,8 @@ for index,i in enumerate(cetesb_stations.code):
     print(strip_accents(cetesb_stations["name"][index]), i)   
     name_station = strip_accents(cetesb_stations["name"][index]).replace('.','_').replace('-','_').replace(' ','_')
     stat.loc[index,"name"] = name_station
-###############################################################################
-#################### leyendo los archivos del MODELO WRF ######################
+    
+ ######################################################## reading the wrf model files ##################################################################
     station_wrf = str(i)+"_wrfout4.dat"
     if str(station_wrf) in listdir:
         by_wrf = pd.read_csv(INPUT+'/'+str(station_wrf))      
@@ -83,8 +78,7 @@ for index,i in enumerate(cetesb_stations.code):
             serie_time["wrf_"+str(poluentes[p])] = by_wrf[str(poluentes[p])]
     else:
         pass
-###############################################################################
-################ leyendo los DADOS DE POLUENTES CETESB ########################
+######################################################## reading pollutants data from cetesb  ##################################################################
     station_pol_cetesb = "all_photo_"+str(i)+".csv"
     if str(station_pol_cetesb) in listdir:
         cetestb_pol = pd.read_csv(INPUT+'/'+str(station_pol_cetesb))
@@ -96,8 +90,7 @@ for index,i in enumerate(cetesb_stations.code):
             serie_time[str(poluentes[p])] = by_cetestb_pol[str(poluentes[p])]
     else:
         pass               
-###############################################################################
-################# leyendo los DADOS METEOROLOGICOS CETESB #####################    
+#################################################### reading meteorological  data from cetesb  ##################################################################    
     station_cetesb = "all_met_"+str(i)+".csv"
     if str(station_cetesb) in listdir:
 #        print(i, station_cetesb)
@@ -112,8 +105,7 @@ for index,i in enumerate(cetesb_stations.code):
 #            print(by_cetestb[str(variables[v])])
     else:
         pass        
-###############################################################################
-################### CALCULO DE LA ESTADISTICA UTILIZADA ####################### 
+############################################## CALCULATION OF THE STATISTICS USED  ##########################################################################
     print("Calculando la estadistica")
     
     for v in var_swd:
@@ -138,5 +130,5 @@ for index,i in enumerate(cetesb_stations.code):
         stat.loc[index,"corr_"+str(p)] = stat_basic.pearson(serie_time[str(p)],serie_time["wrf_"+str(p)])
         stat.loc[index,"RMSE_"+str(p)] = stat_basic.RMSE(serie_time[str(p)],serie_time["wrf_"+str(p)])
     
-print("termino")
-stat.to_csv(OUTPUT+"statistics_cetesb_"+str(name_out)+"_"+str(month)+"_by_station.csv",index = False)
+print("finishhhhh!!!!!!!!!!!")
+stat.to_csv(OUTPUT+"statistics_cetesb_by_station.csv",index = False)
