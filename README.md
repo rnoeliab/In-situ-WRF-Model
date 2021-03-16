@@ -8,6 +8,27 @@ In this repository there are three folders. Each folder has a specific function 
 
 * To work with meteorological data between the WRF model and the CETESB stations, it is recommended to use the following scripts: (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/qualar_meteo_py.py) and (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/WRF_meteo_extractor.py).
 
+ To run these scripts it is necessary to take into account that we use the programming language "python". For this, it is recommended to install [anaconda] (https://docs.anaconda.com/anaconda/install/). Then create an environment (or project) to install the necessary libraries. 
+ 
+ First, download or clone this respository:
+ ```
+ git clone https://github.com/rnoeliab/In-situ-WRF-Model.git
+ ```
+Second, create an enviroment to run this scripts:
+ ```
+ conda create --name wrf_insitu python=3.7 matplotlib
+ conda activate wrf_insitu
+ ```
+Finally, install the libraries
+ ```
+ conda install netCDF4
+ conda install pandas
+ conda install wrf-python
+ conda install requests 
+ conda install beautifulsoup4 
+ conda install lxml
+ ```
+ 
 # 2. Read_save_data
 # 3. comparate_data
 
