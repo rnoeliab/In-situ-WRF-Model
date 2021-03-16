@@ -31,7 +31,12 @@ Finally, install the libraries
  conda install beautifulsoup4 
  conda install lxml
  ```
-For a better understanding of the qualar_py.py and WRF_extract.py scripts,  https://github.com/quishqa/WRF-Chem_SP
+To run the scripts:
+  ```
+ python qualar_py.py 
+ python WRF_extract.py
+ ```
+For a better understanding of the qualar_py.py and WRF_extract.py scripts,  go to https://github.com/quishqa/WRF-Chem_SP
  
 # 2. Read_save_data
 
