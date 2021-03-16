@@ -49,15 +49,18 @@ for index,i in enumerate(cetesb_stations.code):
     station_wrf = str(i)+"_wrfout4.dat"
     if str(station_wrf) in listdir:
         by_wrf = pd.read_csv(INPUT+str(station_wrf))
-        by_wrf = by_wrf.loc[3:len(by_wrf)-23].reset_index(drop=True)
+    #    by_wrf = by_wrf.loc[3:len(by_wrf)-23].reset_index(drop=True)
         by_wrf[by_wrf == 0.0] = np.nan
+        start = by_wrf['local_date'][3][0:19]
+        end = by_wrf['local_date'][len(by_wrf)-1][0:8]+str(int(by_wrf['local_date'][len(by_wrf)-1][8:10])-1) + " 23:00:00"
         
-        start = by_wrf['local_date'][0][0:-6]
-        end = by_wrf['local_date'][len(by_wrf)-1][0:-6]
         serie_time = pd.date_range(start=start, end=end, freq="H")
         serie_time = pd.DataFrame(serie_time, columns=["date"])
         serie_time["date"] = serie_time["date"].dt.strftime("%Y-%m-%d")
 
+        end1 = by_wrf['local_date'][len(by_wrf)-1][0:10] + " 00:00:00"
+        by_wrf = by_wrf.loc[(by_wrf['local_date']>=start) & (by_wrf['local_date']<=end1)]
+        by_wrf = by_wrf.reset_index(drop=True)
         for v in range(len(variables)):
             serie_time["wrf_"+str(variables[v])] = by_wrf[str(variables[v])]            
         for p in range(len(poluentes)):
