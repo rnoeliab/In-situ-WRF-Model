@@ -1,7 +1,7 @@
 # In-situ-WRF-Model
 In this repository there are three folders. Each folder has a specific function in order to fulfill the final objective, which would be to compare the WRF model with the In-situ data from some CETESB stations within our study area. 
 
-# 1. Extract_WRF_CETESB
+## 1. Extract_WRF_CETESB
 
 This folder contains five scripts, the objective is to extract the meteorological and gas data from the WRF model and from various CETESB stations. 
 
@@ -38,17 +38,17 @@ To run the scripts:
  ```
 For a better understanding of the qualar_py.py and WRF_extract.py scripts,  go to https://github.com/quishqa/WRF-Chem_SP
  
-# 2. Read_save_data
+## 2. Read_save_data
 
 * In this folder, we are going to focus on reading the extracted data from the WRF model and from the CETESB. For this, the script (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/save_data_station_wrf_cetesb.py) will help us read the data "all_met", "all_photo" and " wrfout. dat " separating it by each station.
 
-# How to use?
+### How to use?
 
 The script is divided into three parts:
 `The first` part is to place" the libraries "that we are going to use,
 `the second` part is the body of the script, we start first by placing two functions:
 The first function is to eliminate the accents of the Portuguese names, so the script does not generate errors for the Portuguese language; 
-```
+```python
 def strip_accents(text):
     try:
         text = unicode(text, 'utf-8')
@@ -60,7 +60,7 @@ def strip_accents(text):
     return str(text)
 ```
 the second function is to create a folder if it is not already created. 
-```
+```python
 def path(ouput):
     if not os.path.exists(ouput):
         os.makedirs(ouput)
@@ -83,5 +83,5 @@ def path(ouput):
 *
 *
 
-# 3. comparate_data
+## 3. comparate_data
 
