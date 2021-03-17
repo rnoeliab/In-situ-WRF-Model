@@ -66,18 +66,52 @@ def path(ouput):
         os.makedirs(ouput)
     return ouput
 ```
+Luego se coloca los caminos donde se encuentran las coordenadas de las estaciones de la CETESB a analizar (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/cetesb_station_2017_codes_qualr_original.csv), los datos extraido "INPUT", y el camino para guardar los archivos excel ".csv" generados.
 
-
-
+El siguiente punto es leer todos los datos extraido y colocarlo en una lista:
+```python
+listdir = os.listdir(INPUT)
 ```
-```
-```
-```
-```
+Especificar las variables que vamos a analizar "meteorologicas" y "contaminantes". 
 
-
-
-
+Finalizando con el cuerpo del script utilizar un loop For para leer las variables por cada estacion.
+```python
+for index,i in enumerate(cetesb_stations.code):
+    print(strip_accents(cetesb_stations["name"][index]), i)   
+    name_station = strip_accents(cetesb_stations["name"][index]).replace('.','_').replace('-','_').replace(' ','_')
+ ####### reading the wrf model files #########
+    station_wrf = str(i)+"_wrfout4.dat"
+    if str(station_wrf) in listdir:
+        by_wrf = pd.read_csv(INPUT+str(station_wrf))
+        .
+        .
+        .
+ else:
+        pass
+######### reading pollutants data from cetesb  #############
+    station_pol_cetesb = "all_photo_"+str(i)+".csv"
+    if str(station_pol_cetesb) in listdir:
+        by_cetestb_pol = pd.read_csv(INPUT+str(station_pol_cetesb))
+        .
+        .
+        .
+    else:
+        pass               
+######### reading meteorological  data from cetesb  #############
+    station_cetesb = "all_met_"+str(i)+".csv"
+    if str(station_cetesb) in listdir:
+        cetestb = pd.read_csv(INPUT+str(station_cetesb))
+        .
+        .
+        .
+    else:
+        pass
+```  
+cccc
+        
+```python
+print("saving the data")
+serie_time.to_csv(OUTPUT+str(name_station)+".csv",index = False)    
 ```
 
 *
