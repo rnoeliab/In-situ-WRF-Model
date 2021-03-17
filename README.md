@@ -114,8 +114,9 @@ print("saving the data")
 serie_time.to_csv(OUTPUT+str(name_station)+".csv",index = False)    
 ```
 
-* The script (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/plot_station_meteorologicos.py) and (https://github.com/rnoeliab/In-situ-WRF-Model /blob/main/Read_save_data/plot_station_poluentes.py) are made to read the data saved by the previous script and generate time series plots for some stations. 
+* The script (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/plot_station_meteorologicos.py) and (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/plot_station_poluentes.py) are made to read the data saved by the previous script and generate time series plots for some stations. 
 
+Example, I am showing a comparative between the WRF model and CETESB data in a time serie plot for various CETESB stations.
 
 ![Alt text](https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/figures/stations_temperatura.png)
 
