@@ -40,9 +40,14 @@ For a better understanding of the qualar_py.py and WRF_extract.py scripts,  go t
  
 # 2. Read_save_data
 
+* In this folder, we are going to focus on reading the extracted data from the WRF model and from the CETESB. For this, the script (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/Read_save_data/save_data_station_wrf_cetesb.py) will help us read the data "all_met", "all_photo" and " wrfout. dat " separating it by each station.
 
+# How to use?
 
+El script se divide en tres partes: `La primera` parte es colocar "las librerias" que vamos a utilizar, `la segunda` parte es el cuerpo del script, iniciamos primero colocando dos funciones: la primera funcion se trata de eliminar los acentos de los nombres en portugues, asi el script no te genera errores por el idioma portugues; la segunda funcion es para crear una carpeta si es que no esta creada.
 
+*
+*
 
 # 3. comparate_data
 
