@@ -44,7 +44,41 @@ For a better understanding of the qualar_py.py and WRF_extract.py scripts,  go t
 
 # How to use?
 
-El script se divide en tres partes: `La primera` parte es colocar "las librerias" que vamos a utilizar, `la segunda` parte es el cuerpo del script, iniciamos primero colocando dos funciones: la primera funcion se trata de eliminar los acentos de los nombres en portugues, asi el script no te genera errores por el idioma portugues; la segunda funcion es para crear una carpeta si es que no esta creada.
+The script is divided into three parts:
+`The first` part is to place" the libraries "that we are going to use,
+`the second` part is the body of the script, we start first by placing two functions:
+The first function is to eliminate the accents of the Portuguese names, so the script does not generate errors for the Portuguese language; 
+```
+def strip_accents(text):
+    try:
+        text = unicode(text, 'utf-8')
+    except NameError: # unicode is a default on python 3 
+        pass
+    text = unicodedata.normalize('NFD', text)\
+           .encode('ascii', 'ignore')\
+           .decode("utf-8")
+    return str(text)
+```
+the second function is to create a folder if it is not already created. 
+```
+def path(ouput):
+    if not os.path.exists(ouput):
+        os.makedirs(ouput)
+    return ouput
+```
+
+
+
+```
+```
+```
+```
+```
+
+
+
+
+```
 
 *
 *
