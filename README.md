@@ -66,15 +66,15 @@ def path(ouput):
         os.makedirs(ouput)
     return ouput
 ```
-Luego se coloca los caminos donde se encuentran las coordenadas de las estaciones de la CETESB a analizar (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/cetesb_station_2017_codes_qualr_original.csv), los datos extraido "INPUT", y el camino para guardar los archivos excel ".csv" generados.
+Then add the path where the coordinates of the CETESB stations to be analyzed (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/cetesb_station_2017_codes_qualr_original.csv), the path of the data extracted "INPUT", and the path to save the generated excel ".csv" files. 
 
-El siguiente punto es leer todos los datos extraido y colocarlo en una lista:
+The next point is to read all the extracted data and put it in a list: 
 ```python
 listdir = os.listdir(INPUT)
 ```
-Especificar las variables que vamos a analizar "meteorologicas" y "contaminantes". 
+Specify the variables that we are going to analyze "meteorological" and "pollutants". 
 
-Finalizando con el cuerpo del script utilizar un loop For para leer las variables por cada estacion.
+Ending with the body of the script, use a For loop to read the variables for each station. 
 ```python
 for index,i in enumerate(cetesb_stations.code):
     print(strip_accents(cetesb_stations["name"][index]), i)   
@@ -107,7 +107,7 @@ for index,i in enumerate(cetesb_stations.code):
     else:
         pass
 ```  
-cccc
+`The third` part would be to save the generated excel files.
         
 ```python
 print("saving the data")
