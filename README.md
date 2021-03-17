@@ -123,3 +123,5 @@ Example, I am showing a comparative between the WRF model and CETESB data in a t
 
 ## 3. comparate_data
 
+* Finally, in this folder we are going to find two scripts to calculate the statistics between the two types of data. For this, a bibliographic reference has been used. [Emery et al. 2017](https://www.tandfonline.com/doi/full/10.1080/10962247.2016.1265027)
+
