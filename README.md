@@ -9,7 +9,7 @@ This folder contains five scripts, the objective is to extract the meteorologica
 
 * If we only want to download the cetesb data for a large period and for several stations, the following script can be used: [qualar_extractor.py](https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/qualar_extractor.py).
 
-* To work with meteorological data between the WRF model and the CETESB stations, it is recommended to use the following scripts: [qualar_meteo_py.py](https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/qualar_meteo_py.py) and (https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/WRF_meteo_extractor.py).
+* To work with meteorological data between the WRF model and the CETESB stations, it is recommended to use the following scripts: [qualar_meteo_py.py](https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/qualar_meteo_py.py) and [WRF_meteo_extractor.py](https://github.com/rnoeliab/In-situ-WRF-Model/blob/main/extract_WRF_CETESB/WRF_meteo_extractor.py).
 
  To run these scripts it is necessary to take into account that we use the programming language "python". For this, it is recommended to install [anaconda](https://docs.anaconda.com/anaconda/install/). Then create an environment (or project) to install the necessary libraries. 
  
